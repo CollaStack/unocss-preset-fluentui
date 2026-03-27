@@ -2,6 +2,11 @@
   "name": "unocss-preset-fluentui",
   "version": "0.1.0",
   "description": "UnoCSS preset for Fluent UI design tokens",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CollaStack/unocss-preset-fluentui"
+  },
+  "license": "MIT",
   "type": "module",
   "files": ["dist"],
   "types": "./dist/index.d.mts",
