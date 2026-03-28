@@ -1,7 +1,7 @@
-import { test } from "vitest";
-import preset from ".";
+import { test } from 'vitest'
+import preset from '.'
 
-test("init", () => {
-  const p = preset();
-  console.log(p);
-});
+test('init', () => {
+  const p = preset()
+  console.log(p)
+})
