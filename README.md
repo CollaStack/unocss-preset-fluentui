@@ -29,6 +29,14 @@ export default defineConfig({
 })
 ```
 
+You can also forward UnoCSS preset options such as `prefix`:
+
+```ts
+export default defineConfig({
+  presets: [presetFluentUI({ prefix: 'fl-' })],
+})
+```
+
 ## Usage
 
 Use Fluent UI token-based utility classes directly in your markup:

@@ -31,11 +31,13 @@ function makeRules<T extends object>(
   )
 }
 
-function preset<T extends object = object>(): Preset<T> {
+function preset<T extends object = object>(
+  options: Pick<Preset<T>, 'prefix'> = {},
+): Preset<T> {
   const mapping: [RegExp, (...args: any[]) => Rule<T>[]][] = [
     // color
     [
-      /color\-(.+)/,
+      /color-(.+)/,
       ([, color], value) =>
         makeRules<T>(color, value, [
           ['text', 'color'],
@@ -51,30 +53,30 @@ function preset<T extends object = object>(): Preset<T> {
     ],
     // border radius
     [
-      /border\-radius(.+)/,
+      /border-radius-(.+)/,
       ([, radius], value) =>
         makeRules<T>(radius, value, [['rounded', 'border-radius']]),
     ],
     // font family
     [
-      /font\-family\-(\w+)/,
+      /font-family-(\w+)/,
       ([, fontFamily], value) =>
         makeRules<T>(fontFamily, value, [['font', 'font-family']]),
     ],
     // font size
     [
-      /font\-size\-(\w+)/,
+      /font-size-(\w+)/,
       ([, size], value) => makeRules<T>(size, value, [['text', 'font-size']]),
     ],
     // font weight
     [
-      /font\-weight\-(\w+)/,
+      /font-weight-(\w+)/,
       ([, fontWeight], value) =>
         makeRules<T>(fontWeight, value, [['text', 'font-weight']]),
     ],
     // line height
     [
-      /line\-height\-(\w+)/,
+      /line-height-(\w+)/,
       ([, lineHeight], value) =>
         makeRules<T>(lineHeight, value, [['line-height', 'line-height']]),
     ],
@@ -86,13 +88,13 @@ function preset<T extends object = object>(): Preset<T> {
     ],
     // border width
     [
-      /stroke\-width\-(\w+)/,
+      /stroke-width-(\w+)/,
       ([, strokeWidth], value) =>
         makeRules<T>(strokeWidth, value, [['border', 'border-width']]),
     ],
     // spacing vertical
     [
-      /spacing\-vertical\-(\w+)/,
+      /spacing-vertical-(\w+)/,
       ([, spacing], value) =>
         makeRules<T>(spacing, value, [
           ['m', 'margin'],
@@ -158,6 +160,7 @@ function preset<T extends object = object>(): Preset<T> {
     .flat()
 
   return {
+    ...options,
     name: 'fluentui',
     rules,
   }

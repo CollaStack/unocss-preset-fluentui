@@ -1,7 +1,14 @@
-import { test } from 'vitest'
+import { expect, test } from 'vitest'
 import preset from '.'
 
 test('init', () => {
   const p = preset()
-  console.log(p)
+  expect(p.name).toBe('fluentui')
+  expect(p.prefix).toBeUndefined()
+  expect(p.rules.length).toBeGreaterThan(0)
+})
+
+test('supports prefix option', () => {
+  const p = preset({ prefix: 'fl-' })
+  expect(p.prefix).toBe('fl-')
 })
